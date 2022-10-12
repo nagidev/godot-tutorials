@@ -1,0 +1,34 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://addons/dialogue_nodes/nodes/commentNode.gd" type="Script" id=1]
+
+[node name="CommentNode" type="GraphNode"]
+margin_right = 200.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 200, 100 )
+title = "Comment"
+show_close = true
+resizable = true
+comment = true
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color( 1, 1, 1, 1 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextEdit" type="TextEdit" parent="."]
+margin_left = 28.0
+margin_top = 24.0
+margin_right = 172.0
+margin_bottom = 92.0
+rect_min_size = Vector2( 20, 68 )
+smooth_scrolling = true
+wrap_enabled = true
+
+[connection signal="resize_request" from="." to="." method="_on_resize"]
+[connection signal="text_changed" from="TextEdit" to="." method="_on_node_modified"]

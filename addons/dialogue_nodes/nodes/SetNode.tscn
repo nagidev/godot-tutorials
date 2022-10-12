@@ -1,0 +1,54 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://addons/dialogue_nodes/nodes/setNode.gd" type="Script" id=1]
+
+[node name="SetNode" type="GraphNode"]
+margin_right = 240.0
+margin_bottom = 60.0
+title = "SetNode"
+show_close = true
+slot/0/left_enabled = true
+slot/0/left_type = 0
+slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/right_enabled = true
+slot/0/right_type = 0
+slot/0/right_color = Color( 1, 1, 1, 1 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_left = 16.0
+margin_top = 24.0
+margin_right = 224.0
+margin_bottom = 48.0
+
+[node name="Variable" type="LineEdit" parent="HBoxContainer"]
+margin_right = 81.0
+margin_bottom = 24.0
+hint_tooltip = "The property to set the value of."
+size_flags_horizontal = 3
+placeholder_text = "Variable"
+
+[node name="Type" type="OptionButton" parent="HBoxContainer"]
+margin_left = 85.0
+margin_right = 122.0
+margin_bottom = 24.0
+hint_tooltip = "The type of the value to set."
+text = "="
+items = [ "=", null, false, 0, null, "+=", null, false, 1, null, "-=", null, false, 2, null, "*=", null, false, 3, null, "/=", null, false, 4, null ]
+selected = 0
+
+[node name="Value" type="LineEdit" parent="HBoxContainer"]
+margin_left = 126.0
+margin_right = 208.0
+margin_bottom = 24.0
+hint_tooltip = "The value to set the property to.
+Eg: Bob, 12, 0.5, false, etc."
+size_flags_horizontal = 3
+placeholder_text = "Value"
+
+[connection signal="text_changed" from="HBoxContainer/Variable" to="." method="set_variable"]
+[connection signal="item_selected" from="HBoxContainer/Type" to="." method="set_type"]
+[connection signal="text_changed" from="HBoxContainer/Value" to="." method="set_value"]

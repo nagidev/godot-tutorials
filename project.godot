@@ -8,14 +8,43 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "PopupDialog",
+"class": "DialogueBox",
+"language": "GDScript",
+"path": "res://addons/dialogue_nodes/objects/dialogueBox.gd"
+}, {
+"base": "StaticBody",
+"class": "Interactable",
+"language": "GDScript",
+"path": "res://Interact Tutorial/Button/Interactable.gd"
+}, {
+"base": "RichTextEffect",
+"class": "RichTextWait",
+"language": "GDScript",
+"path": "res://addons/dialogue_nodes/objects/bbcodeWait.gd"
+} ]
+_global_script_class_icons={
+"DialogueBox": "",
+"Interactable": "",
+"RichTextWait": ""
+}
+
 [application]
 
-config/name="Tutorial2"
+config/name="Tutorial"
+run/main_scene="res://Interact Tutorial/Map/Overworld.tscn"
 config/icon="res://icon.png"
 
 [display]
 
+window/size/width=1920
+window/size/height=1080
 window/size/fullscreen=true
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/dialogue_nodes/plugin.cfg" )
 
 [input]
 
@@ -44,9 +73,9 @@ jump={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
-villager={
+interact={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":70,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":69,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
 
@@ -57,4 +86,6 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
+quality/filters/msaa=4
+quality/filters/use_debanding=true
 environment/default_environment="res://default_env.tres"

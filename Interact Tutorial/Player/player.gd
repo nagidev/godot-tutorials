@@ -37,7 +37,7 @@ func _physics_process(delta):
 	velocity.x = lerp(velocity.x, move_dir.x * speed, accel * delta)
 	velocity.z = lerp(velocity.z, move_dir.z * speed, accel * delta)
 	
-	velocity = move_and_slide(velocity, Vector3.UP)
+	velocity = move_and_slide_with_snap(velocity, Vector3.UP, Vector3.UP)
 
 
 func _input(event):

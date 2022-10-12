@@ -1,25 +1,9 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://FPS Tutorial/Map/Floor.material" type="Material" id=1]
 [ext_resource path="res://FPS Tutorial/Map/wall.material" type="Material" id=2]
+[ext_resource path="res://game_env.tres" type="Environment" id=3]
 [ext_resource path="res://FPS Tutorial/Player.tscn" type="PackedScene" id=4]
-
-[sub_resource type="ProceduralSky" id=5]
-sky_top_color = Color( 0.342, 0.7372, 0.95, 1 )
-sun_latitude = 45.0
-sun_longitude = 135.0
-sun_energy = 5.0
-
-[sub_resource type="Environment" id=6]
-background_mode = 2
-background_sky = SubResource( 5 )
-fog_enabled = true
-fog_color = Color( 0.0705882, 0.145098, 0.219608, 1 )
-fog_sun_amount = 1.0
-ss_reflections_enabled = true
-ssao_enabled = true
-glow_enabled = true
-glow_hdr_threshold = 2.5
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "models_Map"
@@ -72,10 +56,10 @@ extents = Vector3( 1.25, 1.25, 1.25 )
 [node name="Overworld" type="Spatial"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 6 )
+environment = ExtResource( 3 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
-transform = Transform( 0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 0, 0, 0 )
+transform = Transform( 0.5, 0.612373, -0.612373, 0, 0.707107, 0.707107, 0.866025, -0.353553, 0.353553, 0, 15, 0 )
 light_energy = 4.0
 shadow_enabled = true
 
@@ -85,8 +69,6 @@ shadow_enabled = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.48965, -0.375, -0.988815 )
 mesh = SubResource( 1 )
 skeleton = NodePath("../..")
-material/0 = null
-material/1 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Map2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.48965, -0.375, -0.988815 )
@@ -98,7 +80,6 @@ transform = Transform( 0.850655, 0, 0.525724, 0, 1, 0, -0.525724, 0, 0.850655, -
 [node name="MeshInstance" type="MeshInstance" parent="Box1"]
 mesh = SubResource( 2 )
 skeleton = NodePath("../..")
-material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Box1"]
 shape = SubResource( 4 )
@@ -109,7 +90,6 @@ transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9, 1, 
 [node name="MeshInstance" type="MeshInstance" parent="Box2"]
 mesh = SubResource( 2 )
 skeleton = NodePath("../..")
-material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Box2"]
 shape = SubResource( 4 )
