@@ -1,3 +1,4 @@
+class_name Player
 extends KinematicBody
 
 export var speed = 10
@@ -13,6 +14,7 @@ onready var head = $Head
 var look_rot = Vector3.ZERO
 var move_dir = Vector3.ZERO
 var velocity = Vector3.ZERO
+var looking = true
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -41,7 +43,16 @@ func _physics_process(delta):
 
 
 func _input(event):
-	if event is InputEventMouseMotion:
+	if looking and event is InputEventMouseMotion:
 		look_rot.y -= (event.relative.x * sensitivity)
 		look_rot.x -= (event.relative.y * sensitivity)
 		look_rot.x = clamp(look_rot.x, min_angle, max_angle)
+
+
+# Ice Block code
+func _on_ice_rotation_started():
+	looking = false
+
+
+func _on_ice_rotation_ended():
+	looking = true

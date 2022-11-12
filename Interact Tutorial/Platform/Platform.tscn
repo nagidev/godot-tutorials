@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://Interact Tutorial/Map/platform.material" type="Material" id=1]
+[ext_resource path="res://Interact Tutorial/Platform/platform.material" type="Material" id=1]
 [ext_resource path="res://Interact Tutorial/Map/floor.material" type="Material" id=2]
 [ext_resource path="res://Interact Tutorial/Platform/platform.gd" type="Script" id=3]
 

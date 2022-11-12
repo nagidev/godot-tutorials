@@ -1,16 +1,11 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://Interact Tutorial/Player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Ice Tutorial/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Interact Tutorial/Map/floor.material" type="Material" id=2]
 [ext_resource path="res://Interact Tutorial/Map/wall.material" type="Material" id=3]
-[ext_resource path="res://Interact Tutorial/Button/Button.tscn" type="PackedScene" id=4]
-[ext_resource path="res://addons/dialogue_nodes/objects/dialogueBox.gd" type="Script" id=5]
-[ext_resource path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" type="Script" id=6]
-[ext_resource path="res://addons/dialogue_nodes/themes/bubbly.theme" type="Theme" id=7]
-[ext_resource path="res://Interact Tutorial/Dialogues/dialogues.gd" type="Script" id=8]
-[ext_resource path="res://addons/dialogue_nodes/themes/Poppins-Regular.ttf" type="DynamicFontData" id=9]
-[ext_resource path="res://Interact Tutorial/Door/Door.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Interact Tutorial/Platform/Platform.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Interact Tutorial/Platform/Platform.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Interact Tutorial/Door/Door.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Interact Tutorial/Button/Button.tscn" type="PackedScene" id=6]
 [ext_resource path="res://game_env.tres" type="Environment" id=12]
 
 [sub_resource type="ArrayMesh" id=11]
@@ -61,13 +56,6 @@ surfaces/0 = {
 [sub_resource type="BoxShape" id=10]
 extents = Vector3( 1.25, 1.25, 1.25 )
 
-[sub_resource type="RichTextEffect" id=12]
-script = ExtResource( 6 )
-
-[sub_resource type="DynamicFont" id=14]
-size = 24
-font_data = ExtResource( 9 )
-
 [sub_resource type="ArrayMesh" id=13]
 resource_name = "models_stand"
 surfaces/0 = {
@@ -103,7 +91,7 @@ mesh = SubResource( 11 )
 shape = SubResource( 2 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16 )
 
 [node name="Box" type="RigidBody" parent="."]
 transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -8, 2, 8 )
@@ -116,63 +104,31 @@ mesh = SubResource( 9 )
 [node name="CollisionShape" type="CollisionShape" parent="Box"]
 shape = SubResource( 10 )
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-script = ExtResource( 8 )
-
-[node name="DialogueBox" type="PopupDialog" parent="CanvasLayer"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -322.5
-margin_top = -137.0
-margin_right = 322.5
-margin_bottom = 137.0
-rect_min_size = Vector2( 300, 72 )
-theme = ExtResource( 7 )
-popup_exclusive = true
-script = ExtResource( 5 )
-dialogue_file = "res://Interact Tutorial/Dialogues/buttonDialogue.json"
-start_id = "START"
-options_alignment = 1
-custom_effects = [ SubResource( 12 ) ]
-
-[node name="Label" type="Label" parent="CanvasLayer"]
-margin_right = 45.0
-margin_bottom = 41.0
-custom_fonts/font = SubResource( 14 )
-text = "00"
-align = 1
-valign = 1
-
-[node name="Button" parent="." instance=ExtResource( 4 )]
-prompt_message = "Wubba"
-
-[node name="Door" parent="." instance=ExtResource( 10 )]
+[node name="Door" parent="." instance=ExtResource( 5 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 20.5, 0, 7.5 )
 
-[node name="DoorButton" parent="." instance=ExtResource( 4 )]
+[node name="DoorButton" parent="." instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 20, 2.5, 3.75 )
 
-[node name="Platform" parent="." instance=ExtResource( 11 )]
+[node name="Platform" parent="." instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -10 )
 
-[node name="PlatformButton" parent="." instance=ExtResource( 4 )]
+[node name="PlatformButton" parent="." instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 2, -12 )
 
 [node name="Stand" type="MeshInstance" parent="PlatformButton"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0 )
 mesh = SubResource( 13 )
+skeleton = NodePath("")
 
-[node name="PlatformButton2" parent="." instance=ExtResource( 4 )]
+[node name="PlatformButton2" parent="." instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 14, -13 )
 
 [node name="Stand" type="MeshInstance" parent="PlatformButton2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0 )
 mesh = SubResource( 13 )
+skeleton = NodePath("")
 
-[connection signal="dialogue_ended" from="CanvasLayer/DialogueBox" to="CanvasLayer" method="_on_dialogue_ended"]
-[connection signal="interacted" from="Button" to="CanvasLayer" method="_on_button_interacted"]
 [connection signal="interacted" from="DoorButton" to="Door" method="toggle_door"]
 [connection signal="interacted" from="PlatformButton" to="Platform" method="toggle"]
 [connection signal="interacted" from="PlatformButton2" to="Platform" method="toggle"]

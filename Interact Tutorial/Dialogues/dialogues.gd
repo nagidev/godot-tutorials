@@ -2,6 +2,10 @@ extends CanvasLayer
 
 var player = null
 
+func _process(delta):
+	$Label.text = str(floor(1/delta))
+
+
 func _on_button_interacted(body):
 	$DialogueBox.start()
 	body.set_physics_process(false)
