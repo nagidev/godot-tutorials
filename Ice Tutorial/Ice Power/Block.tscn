@@ -89,7 +89,7 @@ angular_velocity_random = 0.39
 angular_velocity_curve = SubResource( 35 )
 damping = 0.5
 damping_random = 0.36
-angle = 720.0
+angle = 360.0
 angle_random = 1.0
 scale = 0.05
 scale_random = 0.86
@@ -219,7 +219,7 @@ void fragment() {
 	float fx_cutoff = 1.0 - step(offset, fade);
 	float fx_fade = smoothstep(0.0 + offset - fade_length, 1.0 + offset - fade_length, fade);
 	float fx_edge = smoothstep(offset - edge, offset, fade);
-	float fx_pattern = 1.0 - smoothstep(offset + 0.5, offset, fade + pattern + fx_fade);
+	float fx_pattern = smoothstep(offset, offset + 0.5, fade + pattern + fx_fade);
 	
 	float alpha = (fx_fade + fx_edge + fx_pattern) * fx_cutoff;
 	
@@ -242,7 +242,7 @@ shader = SubResource( 10 )
 shader_param/intensity = 1.0
 shader_param/offset = 0.0
 shader_param/fade_length = 0.5
-shader_param/edge = 0.0
+shader_param/edge = 0.2
 shader_param/color_1 = Color( 0, 1, 0.666667, 1 )
 shader_param/color_2 = Color( 0, 1, 0.933333, 1 )
 shader_param/proximity_fade_dist = 0.25
@@ -673,6 +673,6 @@ draw_pass_1 = SubResource( 31 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Rise"
 playback_process_mode = 0
-playback_speed = 1.5
+playback_speed = 2.0
 anims/RESET = SubResource( 26 )
 anims/Rise = SubResource( 27 )
