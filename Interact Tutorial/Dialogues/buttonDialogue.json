@@ -1,1 +1,0 @@
-{"0_1":{"link":"1_1","offset":{"x":0,"y":-200},"start_id":"START"},"1_1":{"dialogue":"[wave]Ooh wowie!\nYou clicked on me![/wave]","offset":{"x":380,"y":-200},"options":{"0":{"link":"END","text":""}},"size":{"x":327,"y":329.75},"speaker":""},"comments":{},"start":{"START":"0_1"},"strays":{},"variables":{}}
