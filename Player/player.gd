@@ -1,27 +1,43 @@
 extends CharacterBody3D
+class_name Player
 
 
+@export_subgroup("Movement")
 @export var speed = 8.0
-@export var crouch_speed = 4.0
 @export var accel = 16.0
 @export var jump = 8.0
+
+@export_subgroup("Crouching")
+@export var crouch_speed = 4.0
 @export var crouch_height = 2.4
 @export var crouch_transition = 8.0
+
+@export_subgroup("Camera")
 @export var sensitivity = 0.2
 @export var min_angle = -80
 @export var max_angle = 90
 
+@export_subgroup("Health")
+@export var fall_damage_threshold = 20
+
 @onready var head = $Head
 @onready var collision_shape = $CollisionShape3D
 @onready var top_cast = $TopCast
+@onready var hurt_overlay = $HurtOverlay
+@onready var health_bar = $HealthBar
+@onready var health_bar_bg = $HealthBarBG
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var look_rot : Vector2
 var stand_height : float
+var old_vel : float = 0.0
+var hurt_tween : Tween
 
 
 func _ready():
 	stand_height = collision_shape.shape.height
+	health_bar.value = GameState.get_value("health")
+	health_bar_bg.value = health_bar.value
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 
@@ -54,6 +70,14 @@ func _physics_process(delta):
 	look_rot.y += rad_to_deg(plat_rot.y * delta)
 	head.rotation_degrees.x = look_rot.x
 	rotation_degrees.y = look_rot.y
+	
+	# fall damage
+	if old_vel < 0:
+		var diff = velocity.y - old_vel
+		if diff > fall_damage_threshold:
+			hurt(diff - fall_damage_threshold)
+			crouch(delta)
+	old_vel = velocity.y
 
 
 func _input(event):
@@ -71,5 +95,14 @@ func crouch(delta : float, reverse = false):
 	head.position.y = lerp(head.position.y, target_height - 1, crouch_transition * delta)
 
 
-
-
+func hurt(damage : float):
+	health_bar.value -= damage
+	GameState.set_value("health", health_bar.value)
+	hurt_overlay.modulate = Color.WHITE
+	if hurt_tween:
+		hurt_tween.kill()
+	hurt_tween = create_tween()
+	hurt_tween.parallel().tween_property(hurt_overlay, "modulate", Color.TRANSPARENT, 0.5)
+	
+	hurt_tween.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
+	hurt_tween.parallel().tween_property(health_bar_bg, "value", health_bar.value, 0.6)

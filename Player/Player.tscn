@@ -1,13 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://cmvudfv03wcmd"]
+[gd_scene load_steps=9 format=3 uid="uid://cmvudfv03wcmd"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_iyqmc"]
+[ext_resource type="Texture2D" uid="uid://dxn8y4celdh0r" path="res://Player/hurt.png" id="2_ehnts"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b0b6p"]
+resource_local_to_scene = true
 radius = 1.0
 height = 4.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_x3w4a"]
 radius = 0.9
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h2xi8"]
+bg_color = Color(0.152941, 0.152941, 0.211765, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ungjm"]
+bg_color = Color(1, 1, 0.921569, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ovmu8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m0slx"]
+bg_color = Color(0.921569, 0.337255, 0.294118, 1)
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_iyqmc")
@@ -25,3 +38,40 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 shape = SubResource("SphereShape3D_x3w4a")
 target_position = Vector3(0, 1, 0)
+
+[node name="HurtOverlay" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ehnts")
+
+[node name="HealthBarBG" type="ProgressBar" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = -56.0
+offset_right = 506.0
+offset_bottom = -6.0
+grow_vertical = 0
+theme_override_styles/background = SubResource("StyleBoxFlat_h2xi8")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ungjm")
+value = 80.0
+show_percentage = false
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = -56.0
+offset_right = 506.0
+offset_bottom = -6.0
+grow_vertical = 0
+theme_override_styles/background = SubResource("StyleBoxEmpty_ovmu8")
+theme_override_styles/fill = SubResource("StyleBoxFlat_m0slx")
+value = 70.0
+show_percentage = false

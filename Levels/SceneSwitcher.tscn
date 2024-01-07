@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://ynhnuwu74jp7"]
+
+[ext_resource type="Script" path="res://Levels/sceneSwitcher.gd" id="1_c8w34"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4pr74"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cp6uc"]
+emission_enabled = true
+emission = Color(1, 1, 0.921569, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8vyso"]
+material = SubResource("StandardMaterial3D_cp6uc")
+
+[node name="SceneSwitcher" type="Area3D"]
+script = ExtResource("1_c8w34")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_4pr74")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_8vyso")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

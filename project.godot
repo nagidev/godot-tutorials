@@ -10,10 +10,14 @@ config_version=5
 
 [application]
 
-config/name="Tutorials-4"
-run/main_scene="res://DemoRoom.tscn"
-config/features=PackedStringArray("4.1", "Forward Plus")
+config/name="Tutorials"
+run/main_scene="res://Levels/DemoRoom.tscn"
+config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GameState="*res://GameState.gd"
 
 [display]
 
@@ -62,3 +66,7 @@ crouch={
 [physics]
 
 3d/default_gravity=19.6
+
+[rendering]
+
+anti_aliasing/quality/msaa_3d=1

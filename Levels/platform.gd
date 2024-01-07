@@ -4,5 +4,4 @@ var time = 0.0
 
 func _physics_process(delta):
 	time += delta
-	position.x = sin(time) * 8
-	rotation.y += delta
+	position.y = 20 + sin(time) * 8
