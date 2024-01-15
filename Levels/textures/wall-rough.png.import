@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://crkf3perc28un"
-path.s3tc="res://.godot/imported/platform-diff.png-b5e9b4b0e93e101ccaa57ab136a21fc6.s3tc.ctex"
+uid="uid://dxwtgkdir728"
+path.s3tc="res://.godot/imported/wall-rough.png-0c14bd3ae99ec938af566cf46cdf2b99.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://textures/platform-diff.png"
-dest_files=["res://.godot/imported/platform-diff.png-b5e9b4b0e93e101ccaa57ab136a21fc6.s3tc.ctex"]
+source_file="res://Levels/textures/wall-rough.png"
+dest_files=["res://.godot/imported/wall-rough.png-0c14bd3ae99ec938af566cf46cdf2b99.s3tc.ctex"]
 
 [params]
 

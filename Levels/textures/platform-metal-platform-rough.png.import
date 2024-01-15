@@ -2,27 +2,26 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drlhon23rxqt0"
-path.s3tc="res://.godot/imported/metal-diff.png-a96ee3ce7bf4542d0a55ead78ae22e53.s3tc.ctex"
+uid="uid://unfxjjokm0qn"
+path="res://.godot/imported/platform-metal-platform-rough.png-f1db456c4f63aa28b17a007c6a12d183.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/metal-diff.png"
-dest_files=["res://.godot/imported/metal-diff.png-a96ee3ce7bf4542d0a55ead78ae22e53.s3tc.ctex"]
+source_file="res://Levels/textures/platform-metal-platform-rough.png"
+dest_files=["res://.godot/imported/platform-metal-platform-rough.png-f1db456c4f63aa28b17a007c6a12d183.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""

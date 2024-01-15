@@ -2,26 +2,27 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://unfxjjokm0qn"
-path="res://.godot/imported/platform-metal-platform-rough.png-349f3b80096ce2cf05cdc83eea53f038.ctex"
+uid="uid://btl52ns2wlqjx"
+path.s3tc="res://.godot/imported/metal-metal-metal-rough.png-8f68fb14ff39885d15129aa86b23d2be.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
-source_file="res://textures/platform-metal-platform-rough.png"
-dest_files=["res://.godot/imported/platform-metal-platform-rough.png-349f3b80096ce2cf05cdc83eea53f038.ctex"]
+source_file="res://Levels/textures/metal-metal-metal-rough.png"
+dest_files=["res://.godot/imported/metal-metal-metal-rough.png-8f68fb14ff39885d15129aa86b23d2be.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""

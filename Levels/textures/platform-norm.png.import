@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxwtgkdir728"
-path.s3tc="res://.godot/imported/wall-rough.png-b30391a63af5a97c5caf9451a3e6550a.s3tc.ctex"
+uid="uid://bjcqeolk43bqq"
+path.s3tc="res://.godot/imported/platform-norm.png-80bd09ad65475e6a4bb52050897b09b0.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://textures/wall-rough.png"
-dest_files=["res://.godot/imported/wall-rough.png-b30391a63af5a97c5caf9451a3e6550a.s3tc.ctex"]
+source_file="res://Levels/textures/platform-norm.png"
+dest_files=["res://.godot/imported/platform-norm.png-80bd09ad65475e6a4bb52050897b09b0.s3tc.ctex"]
 
 [params]
 
@@ -20,12 +20,12 @@ compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=0
+compress/normal_map=1
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=0
-roughness/src_normal=""
+roughness/mode=1
+roughness/src_normal="res://DemoRoom/textures/platform-norm.png"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

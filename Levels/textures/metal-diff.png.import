@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://btl52ns2wlqjx"
-path.s3tc="res://.godot/imported/metal-metal-metal-rough.png-0679fce3a48d2ac2f177a0d1ae16cc20.s3tc.ctex"
+uid="uid://drlhon23rxqt0"
+path.s3tc="res://.godot/imported/metal-diff.png-7887d09b175a76e91bf82deb55798c81.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://textures/metal-metal-metal-rough.png"
-dest_files=["res://.godot/imported/metal-metal-metal-rough.png-0679fce3a48d2ac2f177a0d1ae16cc20.s3tc.ctex"]
+source_file="res://Levels/textures/metal-diff.png"
+dest_files=["res://.godot/imported/metal-diff.png-7887d09b175a76e91bf82deb55798c81.s3tc.ctex"]
 
 [params]
 
