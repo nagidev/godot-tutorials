@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cmvudfv03wcmd"]
+[gd_scene load_steps=11 format=3 uid="uid://cmvudfv03wcmd"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_iyqmc"]
 [ext_resource type="Texture2D" uid="uid://dxn8y4celdh0r" path="res://Player/hurt.png" id="2_ehnts"]
+[ext_resource type="Script" path="res://Player/ui.gd" id="3_uw0jf"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b0b6p"]
 resource_local_to_scene = true
@@ -13,14 +14,26 @@ radius = 0.9
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h2xi8"]
 bg_color = Color(0.152941, 0.152941, 0.211765, 1)
+corner_radius_bottom_left = 10
+corner_detail = 1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ungjm"]
 bg_color = Color(1, 1, 0.921569, 1)
+corner_radius_bottom_left = 10
+corner_detail = 1
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ovmu8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m0slx"]
 bg_color = Color(0.921569, 0.337255, 0.294118, 1)
+corner_radius_bottom_left = 10
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yinaj"]
+bg_color = Color(0.133333, 0.133333, 0.133333, 0.8)
+corner_radius_top_right = 32
+corner_radius_bottom_left = 32
+corner_detail = 1
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_iyqmc")
@@ -39,8 +52,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 shape = SubResource("SphereShape3D_x3w4a")
 target_position = Vector3(0, 1, 0)
 
-[node name="HurtOverlay" type="TextureRect" parent="."]
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_uw0jf")
+
+[node name="HurtOverlay" type="TextureRect" parent="UI"]
 modulate = Color(1, 1, 1, 0)
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -48,30 +71,85 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_ehnts")
 
-[node name="HealthBarBG" type="ProgressBar" parent="."]
+[node name="HealthBarBG" type="ProgressBar" parent="UI"]
+layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 6.0
-offset_top = -56.0
+offset_top = -50.0
 offset_right = 506.0
-offset_bottom = -6.0
+offset_bottom = -10.0
 grow_vertical = 0
 theme_override_styles/background = SubResource("StyleBoxFlat_h2xi8")
 theme_override_styles/fill = SubResource("StyleBoxFlat_ungjm")
 value = 80.0
 show_percentage = false
 
-[node name="HealthBar" type="ProgressBar" parent="."]
+[node name="HealthBar" type="ProgressBar" parent="UI"]
+layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 6.0
-offset_top = -56.0
+offset_top = -50.0
 offset_right = 506.0
-offset_bottom = -6.0
+offset_bottom = -10.0
 grow_vertical = 0
 theme_override_styles/background = SubResource("StyleBoxEmpty_ovmu8")
 theme_override_styles/fill = SubResource("StyleBoxFlat_m0slx")
 value = 70.0
 show_percentage = false
+
+[node name="GameOver" type="Panel" parent="UI"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.292
+anchor_top = 0.315
+anchor_right = 0.708
+anchor_bottom = 0.685
+offset_left = -0.640076
+offset_top = -0.200043
+offset_right = 0.640015
+offset_bottom = 0.199951
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_yinaj")
+
+[node name="BoxContainer" type="BoxContainer" parent="UI/GameOver"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+vertical = true
+
+[node name="Label" type="Label" parent="UI/GameOver/BoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.921828, 0.337072, 0.294087, 1)
+theme_override_font_sizes/font_size = 80
+text = "YOU DED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BoxContainer" type="BoxContainer" parent="UI/GameOver/BoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="RestartButton" type="Button" parent="UI/GameOver/BoxContainer/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+text = "RESTART	"
+
+[node name="QuitButton" type="Button" parent="UI/GameOver/BoxContainer/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+text = "QUIT"
+
+[connection signal="pressed" from="UI/GameOver/BoxContainer/BoxContainer/RestartButton" to="UI" method="_on_restart_button_pressed"]
+[connection signal="pressed" from="UI/GameOver/BoxContainer/BoxContainer/QuitButton" to="UI" method="_on_quit_button_pressed"]
