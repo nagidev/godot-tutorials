@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cp25xqkr0erht"
-path.bptc="res://.godot/imported/wall-norm.png-7def520c1463bab7609fee6159d64138.bptc.ctex"
+uid="uid://dggfcvvhfe11o"
+path.bptc="res://.godot/imported/door-norm.png-c80b09d570dbc8e17bc96fc0e7d937f9.bptc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Levels/textures/wall-norm.png"
-dest_files=["res://.godot/imported/wall-norm.png-7def520c1463bab7609fee6159d64138.bptc.ctex"]
+source_file="res://Levels/textures/door-norm.png"
+dest_files=["res://.godot/imported/door-norm.png-c80b09d570dbc8e17bc96fc0e7d937f9.bptc.ctex"]
 
 [params]
 
@@ -25,7 +25,7 @@ compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=1
-roughness/src_normal="res://DemoRoom/textures/wall-norm.png"
+roughness/src_normal="res://Levels/textures/door-norm.png"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

@@ -14,6 +14,10 @@ func _ready():
 	game_over.hide()
 
 
+#func _process(_delta):
+#	$KeyCounter.text = str(GameState.get_value("key"))
+
+
 func hurt(damage: float):
 	health_bar.value -= damage
 	GameState.set_value("health", health_bar.value)

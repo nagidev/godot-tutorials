@@ -1,8 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://cmvudfv03wcmd"]
+[gd_scene load_steps=13 format=3 uid="uid://cmvudfv03wcmd"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_iyqmc"]
 [ext_resource type="Texture2D" uid="uid://dxn8y4celdh0r" path="res://Player/hurt.png" id="2_ehnts"]
+[ext_resource type="PackedScene" uid="uid://by7g6qtybner8" path="res://Interact/InteractRay.tscn" id="2_h0cin"]
 [ext_resource type="Script" path="res://Player/ui.gd" id="3_uw0jf"]
+[ext_resource type="FontFile" uid="uid://bguf3rdjitpq7" path="res://Poppins-Regular.ttf" id="5_87d1x"]
+[ext_resource type="Texture2D" uid="uid://bidw8qikasua4" path="res://Player/crosshair.png" id="6_20gd7"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b0b6p"]
 resource_local_to_scene = true
@@ -29,12 +32,6 @@ bg_color = Color(0.921569, 0.337255, 0.294118, 1)
 corner_radius_bottom_left = 10
 corner_detail = 1
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yinaj"]
-bg_color = Color(0.133333, 0.133333, 0.133333, 0.8)
-corner_radius_top_right = 32
-corner_radius_bottom_left = 32
-corner_detail = 1
-
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_iyqmc")
 
@@ -46,6 +43,8 @@ shape = SubResource("CapsuleShape3D_b0b6p")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
+
+[node name="InteractRay" parent="Head" instance=ExtResource("2_h0cin")]
 
 [node name="TopCast" type="ShapeCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
@@ -60,6 +59,21 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_uw0jf")
+
+[node name="CrossHair" type="TextureRect" parent="UI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_20gd7")
 
 [node name="HurtOverlay" type="TextureRect" parent="UI"]
 modulate = Color(1, 1, 1, 0)
@@ -104,18 +118,14 @@ show_percentage = false
 [node name="GameOver" type="Panel" parent="UI"]
 visible = false
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.292
-anchor_top = 0.315
-anchor_right = 0.708
-anchor_bottom = 0.685
-offset_left = -0.640076
-offset_top = -0.200043
-offset_right = 0.640015
-offset_bottom = 0.199951
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -219.0
+offset_bottom = 219.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_yinaj")
 
 [node name="BoxContainer" type="BoxContainer" parent="UI/GameOver"]
 layout_mode = 1
@@ -124,32 +134,42 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+alignment = 1
 vertical = true
 
 [node name="Label" type="Label" parent="UI/GameOver/BoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_vertical = 6
 theme_override_colors/font_color = Color(0.921828, 0.337072, 0.294087, 1)
-theme_override_font_sizes/font_size = 80
-text = "YOU DED"
+theme_override_fonts/font = ExtResource("5_87d1x")
+theme_override_font_sizes/font_size = 200
+text = "WOMP WOMP"
 horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="BoxContainer" type="BoxContainer" parent="UI/GameOver/BoxContainer"]
+custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 alignment = 1
 
 [node name="RestartButton" type="Button" parent="UI/GameOver/BoxContainer/BoxContainer"]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
-size_flags_horizontal = 3
+theme_override_colors/font_pressed_color = Color(0.921569, 0.337255, 0.294118, 1)
+theme_override_colors/font_hover_color = Color(0.921828, 0.337072, 0.294087, 1)
+theme_override_fonts/font = ExtResource("5_87d1x")
 theme_override_font_sizes/font_size = 32
-text = "RESTART	"
+text = "RESTART"
+flat = true
 
 [node name="QuitButton" type="Button" parent="UI/GameOver/BoxContainer/BoxContainer"]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
-size_flags_horizontal = 3
+theme_override_colors/font_pressed_color = Color(0.921569, 0.337255, 0.294118, 1)
+theme_override_colors/font_hover_color = Color(0.921569, 0.337255, 0.294118, 1)
+theme_override_fonts/font = ExtResource("5_87d1x")
 theme_override_font_sizes/font_size = 32
 text = "QUIT"
+flat = true
 
 [connection signal="pressed" from="UI/GameOver/BoxContainer/BoxContainer/RestartButton" to="UI" method="_on_restart_button_pressed"]
 [connection signal="pressed" from="UI/GameOver/BoxContainer/BoxContainer/QuitButton" to="UI" method="_on_quit_button_pressed"]
