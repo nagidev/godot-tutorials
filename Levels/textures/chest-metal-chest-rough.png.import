@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cp25xqkr0erht"
-path.bptc="res://.godot/imported/wall-norm.png-7def520c1463bab7609fee6159d64138.bptc.ctex"
+uid="uid://b7nugjkccjulf"
+path.bptc="res://.godot/imported/chest-metal-chest-rough.png-c076ec578fd92efaf8bfcbd683cfdddc.bptc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Levels/textures/wall-norm.png"
-dest_files=["res://.godot/imported/wall-norm.png-7def520c1463bab7609fee6159d64138.bptc.ctex"]
+source_file="res://Levels/textures/chest-metal-chest-rough.png"
+dest_files=["res://.godot/imported/chest-metal-chest-rough.png-c076ec578fd92efaf8bfcbd683cfdddc.bptc.ctex"]
 
 [params]
 
@@ -20,12 +20,12 @@ compress/mode=2
 compress/high_quality=true
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=1
+compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=1
-roughness/src_normal="res://DemoRoom/textures/wall-norm.png"
+roughness/mode=0
+roughness/src_normal=""
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

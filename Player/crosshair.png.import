@@ -2,27 +2,26 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drlhon23rxqt0"
-path.bptc="res://.godot/imported/metal-diff.png-7887d09b175a76e91bf82deb55798c81.bptc.ctex"
+uid="uid://bidw8qikasua4"
+path="res://.godot/imported/crosshair.png-533a20c4b7565d94adab242887a55d54.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://Levels/textures/metal-diff.png"
-dest_files=["res://.godot/imported/metal-diff.png-7887d09b175a76e91bf82deb55798c81.bptc.ctex"]
+source_file="res://Player/crosshair.png"
+dest_files=["res://.godot/imported/crosshair.png-533a20c4b7565d94adab242887a55d54.ctex"]
 
 [params]
 
-compress/mode=2
-compress/high_quality=true
+compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""

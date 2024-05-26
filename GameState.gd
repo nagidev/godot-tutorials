@@ -1,8 +1,13 @@
 extends Node
 
 var state := {
-	"health": 100
+	"health": 100,
+	"key": 0
 }
+
+func has_value(key):
+	return state.has(key)
+
 
 func get_value(key):
 	if state.has(key):
