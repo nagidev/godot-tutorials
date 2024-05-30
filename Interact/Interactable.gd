@@ -17,6 +17,8 @@ func get_prompt():
 		if action is InputEventKey:
 			key_name = action.as_text_physical_keycode()
 			break
+		elif action is InputEventMouseButton:
+			key_name = action.as_text()
 	return prompt_message + "\n[" + key_name + "]"
 
 
